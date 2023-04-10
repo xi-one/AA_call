@@ -35,12 +35,12 @@ async function main() {
     }
 
     /* 지갑 생성 */
-    await createExample(AA)
+    //await createExample(AA)
 
     /* counter contract에 트랜잭션 보내기 */
     //await callExample(AA)
-    
-    
+    const rcpt = await AA.changeOwnerOfPaymaster("0xC965377Ef36137fa85c582e3D404160D0C229AB3");
+    console.log(rcpt)
 }
 
 // 지갑 생성 예제

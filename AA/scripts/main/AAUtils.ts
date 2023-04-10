@@ -45,6 +45,14 @@ export class AAUtils {
         return deposit.toString()
     }
 
+    // paymaster owner 변경
+    async changeOwnerOfPaymaster(address: string) {
+        const tx = await this.paymaster.transferOwnership(address)
+        const rcpt = await tx.wait()
+
+        return rcpt
+    }
+
     // paymater Token 발행 해주는 함수 
     async mintToken(address: string, amount: string) {
         await this.paymaster.mintTokens(address, parseEther(amount))
