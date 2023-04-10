@@ -90,7 +90,7 @@ async function callExample(AA: AAUtils) {
     const signature = await ethersSigner.signMessage(msg) // 프런트에서 서명
     op = AA.addSignatureToOp(op, signature)
     
-    op = await fillAndSign(op, ethersSigner, AA.entrypoint) // 프런트에게 서명 받아왔다고 가정
+    
     await AA.mintToken(op.sender, '1')  // 컨트랙트 지갑에 토큰 발행 
     console.log("======== mint succeed ========")
     console.log("op is", op)
