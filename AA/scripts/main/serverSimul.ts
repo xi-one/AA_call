@@ -86,9 +86,10 @@ async function callExample(AA: AAUtils) {
         callGasLimit: 1e6
     })
 
-    /*const msg = await AA.createMessageFromOp(op)
-        -> 프런트에게 전달해서 서명 받아오기 
-    */
+    const msg = await AA.createMessageFromOp(op)
+    const signature = await ethersSigner.signMessage(msg) // 프런트에서 서명
+    op = AA.addSignatureToOp(op, signature)
+    
     op = await fillAndSign(op, ethersSigner, AA.entrypoint) // 프런트에게 서명 받아왔다고 가정
     await AA.mintToken(op.sender, '1')  // 컨트랙트 지갑에 토큰 발행 
     console.log("======== mint succeed ========")
